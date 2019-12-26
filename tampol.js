@@ -15,10 +15,12 @@ let y
 function startGame(){
     canvas.style.visibility = 'visible'
     let startBtn = document.getElementById('start-game')
+    let startBtn2 = document.getElementById('start-game-2')
     if (startBtn.innerHTML == 'STOP'){
         stop()
         startBtn.innerHTML = 'START'
     }else{
+        startBtn2.remove()
         startBtn.innerHTML = 'STOP'
         loadInterval = window.setInterval(start, 2000)
     }
@@ -28,12 +30,16 @@ function start(){
     ctx.clearRect(0,0, canvas.width, canvas.height);
     ctx.fillText(score, canvas.width/2, 50);
     // RANDOM IMAGE LOCATION ON CANVAS
-    rand = Math.ceil(Math.random()*19)
+    rand = Math.ceil(Math.random()*20)
     x = Math.round(Math.random()*(canvas.width-200));
     y = Math.round(Math.random()*(canvas.height-200));
+    dx = (Math.random()-0.5)*6;
+    dy = (Math.random()-0.5)*6;
     loadImage(rand, x, y)
+    // loadImageDynamic( rand, x, y, dx, dy)
 }
-// CREATE IMAGE
+
+// CREATE IMAGE STATIC
 function loadImage(rand, x, y, status=true){
     // rand = Math.ceil(Math.random()*19)
     let image = new Image();
@@ -41,17 +47,24 @@ function loadImage(rand, x, y, status=true){
     // x = Math.round(Math.random()*(canvas.width-200));
     // y = Math.round(Math.random()*(canvas.height-200));
     ctx.drawImage(image, x, y, 200, 200)
-    }; if (status == true){
-image.src = `../Mentee-Slap/assets/img/before/circle-cropped(${rand}).png`
-}else{
-    image.src = `../Mentee-Slap/assets/img/after/circle-cropped(${rand}).png`
-}}
+    };
+    
+    // mouse click change status
+    if (status == true){
+        image.src = `../Mentee-Slap/assets/img/before/circle-cropped(${rand}).png`
+    } else {
+        image.src = `../Mentee-Slap/assets/img/after/circle-cropped(${rand}).png`
+    }
+}
+
+
 // STOP GAME
 function stop(){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     window.clearInterval(loadInterval)
     score = 1
 }
+
 // MOUSEDOWN EVENT
 window.addEventListener("mousedown", onMouseDown, false);
 function onMouseDown(e) {
@@ -74,3 +87,5 @@ function onMouseDown(e) {
         console.log("mouseYincanvas =" + mouseYinCanvas)
     }
 };
+
+
