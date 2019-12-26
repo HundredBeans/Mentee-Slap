@@ -4,7 +4,7 @@ body {
     background: -webkit-linear-gradient(to right, #1A345F, #606D7E);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #1A345F, #606D7E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-#start-game{
+.start-game{
     position: absolute;
     top: 50%;
     margin-top: -40px;
@@ -15,7 +15,7 @@ body {
     font-weight: bold;
     font-family: 'Trebuchet MS', sans-serif;
     text-align: center;
-    line-height: 100px;
+    line-height: 2em;
     letter-spacing: -1px;
     color: #1A345F;
     border: none;
@@ -25,13 +25,20 @@ body {
     box-shadow: 0 0 0 0 rgba(#1A345F, .5);
     transition: width 0.9s, height 0.9s ;
 }
+
+#start-game-2 {
+    top: 20%
+}
+
 .div-score{
     position:absolute;
 }
 
 canvas {
     position: relative;
-    z-index: -1;
+    z-index: 2;
+    background:#EEEEEC;
+    visibility: hidden;
 }
 
 #myAnimation {
@@ -39,5 +46,4 @@ canvas {
     height: 50px;
     position: absolute;
     z-index: 2;
-
 }
