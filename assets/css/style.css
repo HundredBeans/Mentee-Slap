@@ -1,0 +1,43 @@
+/* ------------------------------- BACKGROUND BODY -----------------------------------------*/
+body {
+    background: #606D7E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1A345F, #606D7E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1A345F, #606D7E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#start-game{
+    position: absolute;
+    top: 50%;
+    margin-top: -40px;
+    display: block;
+    font-size: 1.3em;
+    width: 100px;
+    height: 100px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    line-height: 100px;
+    letter-spacing: -1px;
+    color: #1A345F;
+    border: none;
+    /* border-radius: 50%; */
+    background: #E53715;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(#1A345F, .5);
+    transition: width 0.9s, height 0.9s ;
+}
+.div-score{
+    position:absolute;
+}
+
+canvas {
+    position: relative;
+    z-index: -1;
+}
+
+#myAnimation {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 2;
+
+}
