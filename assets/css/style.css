@@ -95,3 +95,14 @@ canvas {
 .stroke {
     -webkit-text-stroke: 0.35px gray;
 }
+
+.unstyled-dash {
+    text-decoration: none;
+    color: white;
+}
+
+.unstyled-dash:hover {
+    color: white;
+    text-decoration: none;
+
+}
