@@ -4,31 +4,40 @@ canvas.height = window.innerHeight;
 let ctx = canvas.getContext('2d');
 
 // ADD SCORE
-let score = 1
+let score = 0
 ctx.font = "30px Verdana";
 ctx.textAlign = 'center'
 // RANDOM IMAGE LOCATION ON CANVAS
 let rand 
 let x 
 let y 
+// INTERVAL VARIABLE
+let interval = 1000
+// SOUND EFFECT VARIABLE
+let slapStatus = true
 // DOM CLICK FROM HTML
 function startGame(){
     canvas.style.visibility = 'visible'
     let startBtn = document.getElementById('start-game')
-    let startBtn2 = document.getElementById('start-game-2')
-    if (startBtn.innerHTML == 'STOP'){
+    document.getElementById('kahoot').play()
+    let stopEle = document.getElementById('stop-game')
+    let buttonEle = stopEle.parentElement
+    
+
+    if (!startBtn){
         stop()
-        startBtn.innerHTML = 'START'
-    }else{
-        startBtn2.remove()
-        startBtn.innerHTML = 'STOP'
+        location.reload(true)
+    }else {
+        buttonEle.style.zIndex = 2
+        startBtn.remove()
         loadInterval = window.setInterval(start, 2000)
     }
 }
 // START GAME
 function start(){
     ctx.clearRect(0,0, canvas.width, canvas.height);
-    ctx.fillText(score, canvas.width/2, 50);
+    scoreElem = document.getElementById('score')
+    scoreElem.innerHTML = score
     // RANDOM IMAGE LOCATION ON CANVAS
     rand = Math.ceil(Math.random()*20)
     x = Math.round(Math.random()*(canvas.width-200));
@@ -62,7 +71,8 @@ function loadImage(rand, x, y, status=true){
 function stop(){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     window.clearInterval(loadInterval)
-    score = 1
+    scoreElem.innerHTML = 0
+    document.getElementById('kahoot').pause()
 }
 
 // MOUSEDOWN EVENT
@@ -73,19 +83,42 @@ function onMouseDown(e) {
 
     let mouseXinCanvas = e.clientX;
     let mouseYinCanvas = e.clientY;
-
+    // MAKE SURE THAT IT CLICK THE RIGHT AREA
+    if (mouseXinCanvas > 100 && canvas.style.visibility == 'visible'){
     if (x <= mouseXinCanvas && x+300 >= mouseXinCanvas && y <= mouseYinCanvas && y+200 >= mouseYinCanvas){
         score++
+        if (slapStatus == true){
+            document.getElementById('slap').play()
+            slapStatus = false
+            console.log('slap')
+        }else{
+            document.getElementById('punch').play()
+            slapStatus = true
+            console.log('punch')
+        }
+        if (rand == 3 || rand == 6 || rand == 14){
+            document.getElementById('scream').play()
+        }
+        scoreElem.innerHTML = score
         ctx.clearRect(x, y, 200, 200)
         console.log(rand)
         loadImage(rand, x, y, false)
     } else {
         score--
+        document.getElementById('kentut').play()
+        if (score < 0){
+            scoreElem.innerHTML = 'FAIL'
+            alert('Cupu lu')
+            location.reload(true)
+        } else {
+            scoreElem.innerHTML = score
+        }
         console.log("x =" + x)
         console.log("y =" + y)
         console.log("mouseXincanvas =" + mouseXinCanvas)
         console.log("mouseYincanvas =" + mouseYinCanvas)
     }
+}
 };
 
 

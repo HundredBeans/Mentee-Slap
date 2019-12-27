@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mentee Slap</title>
+    <link rel="stylesheet" type="text/css" href="../Mentee-Slap/assets/css/style.css">
+    <link rel="stylesheet" href="../Mentee-Slap/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class='background'>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1 po">
+                    <div>
+                        <h1 class="font-cabin" style="top: 15em; position: absolute;color: white;" id="score">0</h1>
+                    </div>
+                    <div id="btn" class="btn btn-primary btn-lg" style="top: 6em;">
+                        <span id="stop-game" class="font-cabin start-game glyphicon glyphicon-pause border-0"  onclick='startGame2()'><br> STOP</span>
+                    </div>
+                    <div id="btn" class="btn btn-primary btn-lg" style="top: 6em;">
+                        <span id="start-game" class="font-cabin start-game glyphicon glyphicon-play"  onclick='startGame2()'><br>START</span>
+                    </div>
+                    <div id="btn" class="btn btn-primary btn-lg" style="top: 0em;">
+                        <a style="color:white" href="main.html"><span id="home" class="font-cabin glyphicon glyphicon-home"><br>HOME</span></a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <canvas id="field" width="800" height="600" style="position: absolute;" >
+                    </canvas>
+                    <div class="wrapper-content">
+                        <div class="row font-cabin text-white d-flex justify-content-center">
+                            <div class="col-7">
+                                <h2>How to Play:</h2>
+                                <ul style="font-size:larger;">
+                                    <li>Press Start button to Play</li>
+                                    <li>Aim for the head</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row font-cabin text-white d-flex justify-content-center">
+                            <div class="col-7">
+                                <h2>Features :</h2>
+                                <ul style="font-size:larger;">
+                                    <li><a href="feature.html" class="unstyled-dash">Multiplayer</a></li>
+                                    <li><a href="feature.html" class="unstyled-dash">Custom Voice Line</a></li>
+                                    <li><a href="feature.html" class="unstyled-dash">Setting Move Speed</a></li>
+                                    <li><a href="feature.html" class="unstyled-dash">Special Character</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <audio  id="kentut" src="../Mentee-Slap/assets/audio/kentut (online-audio-converter.com)-[AudioTrimmer.com].mp3" ></audio>
+            <audio  id="punch" src="../Mentee-Slap/assets/audio/punch (online-audio-converter.com)-[AudioTrimmer.com].mp3" ></audio>
+            <audio  id="slap" src="../Mentee-Slap/assets/audio/slap (online-audio-converter.com)-[AudioTrimmer.com].mp3" ></audio>
+            <audio  id="kahoot" src="assets/audio/Kahoot Lobby Music (HD).mp3" loop></audio>
+            <audio  id="scream" src="assets/audio/mix_01s (audio-joiner.com).mp3"></audio>
+        <script src="tampol2.js"></script>
+        </div>
+    </div>
+</body>
+</html>
