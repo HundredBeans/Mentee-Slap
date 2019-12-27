@@ -4,7 +4,7 @@ canvas.height = window.innerHeight;
 let ctx = canvas.getContext('2d');
 
 // ADD SCORE
-let score = 1
+let score = 0
 ctx.font = "30px Verdana";
 ctx.textAlign = 'center'
 // RANDOM IMAGE LOCATION ON CANVAS
@@ -79,7 +79,8 @@ function onMouseDown(e) {
 
     let mouseXinCanvas = e.clientX;
     let mouseYinCanvas = e.clientY;
-
+    // MAKE SURE THAT IT CLICK THE RIGHT AREA
+    if (mouseXinCanvas > 100){
     if (x <= mouseXinCanvas && x+300 >= mouseXinCanvas && y <= mouseYinCanvas && y+200 >= mouseYinCanvas){
         score++
         if (slapStatus == true){
@@ -108,6 +109,7 @@ function onMouseDown(e) {
         console.log("mouseXincanvas =" + mouseXinCanvas)
         console.log("mouseYincanvas =" + mouseYinCanvas)
     }
+}
 };
 
 

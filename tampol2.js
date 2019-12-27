@@ -4,7 +4,7 @@ canvas.height = window.innerHeight;
 let ctx = canvas.getContext('2d');
 
 // ADD SCORE
-let score = 1
+let score = 0
 ctx.font = "30px Verdana";
 ctx.textAlign = 'center'
 // RANDOM IMAGE LOCATION ON CANVAS
@@ -13,6 +13,8 @@ let x
 let y
 let dx
 let dy 
+// SOUND EFFECT VARIABLE
+let slapStatus = true
 // DOM CLICK FROM HTML
 function startGame2(){
     canvas.style.visibility = 'visible'
@@ -49,7 +51,7 @@ function start2(){
 function stop(){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     window.clearInterval(loadInterval)
-    score = 1
+    score = 0
 }
 
 
@@ -96,27 +98,39 @@ function onMouseDown(e) {
 
     let mouseXinCanvas = e.clientX;
     let mouseYinCanvas = e.clientY;
-
-    if (x <= mouseXinCanvas && x+300 >= mouseXinCanvas && y <= mouseYinCanvas && y+200 >= mouseYinCanvas){
-        score++
-        scoreElem.innerHTML = score
-        ctx.clearRect(x, y, 200, 200)
-        console.log(rand)
-        dx = 0
-        dy = 0
-        loadImageDynamic()
-        setTimeout(start2, 1500)
-    } else {
-        score--
-        scoreElem.innerHTML = score
-        if (score < 0){
-            alert('Cupu lu')
-            location.reload(true)
+    // MAKE SURE THAT IT CLICK THE RIGHT AREA
+    if (mouseXinCanvas > 100){
+        if (x <= mouseXinCanvas && x+300 >= mouseXinCanvas && y <= mouseYinCanvas && y+200 >= mouseYinCanvas){
+            score++
+            scoreElem.innerHTML = score
+            ctx.clearRect(x, y, 200, 200)
+            console.log(rand)
+            dx = 0
+            dy = 0
+            setTimeout(start2, 1500)
+            loadImageDynamic()
+            if (slapStatus == true){
+                document.getElementById('slap').play()
+                slapStatus = false
+                console.log('slap')
+            }else{
+                document.getElementById('punch').play()
+                slapStatus = true
+                console.log('punch')
+            }
+        } else {
+            score--
+            document.getElementById('kentut').play()
+            scoreElem.innerHTML = score
+            if (score < 0){
+                alert('Cupu lu')
+                location.reload(true)
+            }
+            console.log("x =" + x)
+            console.log("y =" + y)
+            console.log("mouseXincanvas =" + mouseXinCanvas)
+            console.log("mouseYincanvas =" + mouseYinCanvas)
         }
-        console.log("x =" + x)
-        console.log("y =" + y)
-        console.log("mouseXincanvas =" + mouseXinCanvas)
-        console.log("mouseYincanvas =" + mouseYinCanvas)
     }
 };
 
