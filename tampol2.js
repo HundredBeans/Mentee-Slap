@@ -43,6 +43,7 @@ function start2(){
     dy = 1;
     console.log(dx)
     console.log(dy)
+    document.getElementById('kahoot').play()
     // loadImage(rand, x, y)
     loadImageDynamic()
 }
@@ -117,6 +118,9 @@ function onMouseDown(e) {
                 document.getElementById('punch').play()
                 slapStatus = true
                 console.log('punch')
+            }
+            if (rand == 3 || rand == 6 || rand == 14){
+                document.getElementById('scream').play()
             }
         } else {
             score--

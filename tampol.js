@@ -20,6 +20,7 @@ function startGame(){
     canvas.style.visibility = 'visible'
     let startBtn = document.getElementById('start-game')
     let startBtn2 = document.getElementById('start-game-2')
+    document.getElementById('kahoot').play()
     if (startBtn.innerHTML == 'STOP'){
         stop()
         startBtn.innerHTML = 'START'
@@ -91,6 +92,9 @@ function onMouseDown(e) {
             document.getElementById('punch').play()
             slapStatus = true
             console.log('punch')
+        }
+        if (rand == 3 || rand == 6 || rand == 14){
+            document.getElementById('scream').play()
         }
         scoreElem.innerHTML = score
         ctx.clearRect(x, y, 200, 200)
