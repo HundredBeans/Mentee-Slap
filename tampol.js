@@ -15,13 +15,15 @@ let y
 function startGame(){
     canvas.style.visibility = 'visible'
     let startBtn = document.getElementById('start-game')
-    let startBtn2 = document.getElementById('start-game-2')
+    let stopEle = document.getElementById('stop-game')
+    let buttonEle = stopEle.parentElement
+    
     if (startBtn.innerHTML == 'STOP'){
         stop()
         startBtn.innerHTML = 'START'
-    }else{
-        startBtn2.remove()
-        startBtn.innerHTML = 'STOP'
+    }else {
+        buttonEle.style.zIndex = 2
+        startBtn.remove()
         loadInterval = window.setInterval(start, 2000)
     }
 }

@@ -7,22 +7,37 @@
     <title>Mentee Slap</title>
     <link rel="stylesheet" type="text/css" href="../Mentee-Slap/assets/css/style.css">
     <link rel="stylesheet" href="../Mentee-Slap/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class='background'>
-        <div>
-            <h1 id="score">0</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1">
+                    <div>
+                        <h1 id="score">0</h1>
+                    </div>
+                    <div id="btn" class="btn btn-primary btn-lg">
+                        <span id="stop-game" class="start-game glyphicon glyphicon-pause border-0"  onclick='startGame()'><br> STOP</span>
+                    </div>
+                    <div id="btn" class="btn btn-primary btn-lg">
+                        <span id="start-game" class="start-game glyphicon glyphicon-play"  onclick='startGame()'><br>START</span>
+                    </div>
+                        
+                    <!-- <div id="btn">
+                        <span id="start-game-2" class="start-game" onclick='startGame2()'>START WOOHO</span>
+                    </div> -->
+                </div>
+                <div class="col-md-10">
+                    <canvas id="field" width="800" height="600" style="position: absolute;" >
+                    </canvas>
+                </div>
+            </div>
+        <script src="tampol.js"></script>
+        <script src="tampol2.js"></script>
         </div>
-        <div id="btn">
-            <span id="start-game" class="start-game" onclick='startGame()'>START UHUYY</span>
-        </div>
-        <div id="btn">
-            <span id="start-game-2" class="start-game" onclick='startGame2()'>START WOOHO</span>
-        </div>
-        <canvas id="field" width="800" height="600" style="position: absolute; top:0; right: 0%;" >
-        </canvas>
     </div>
-    <script src="tampol2.js"></script>
-    <script src="tampol.js"></script>
 </body>
 </html>

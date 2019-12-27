@@ -1,29 +1,35 @@
 /* ------------------------------- BACKGROUND BODY -----------------------------------------*/
 body {
-    background: #606D7E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #1A345F, #606D7E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #1A345F, #606D7E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0;
+    background: white;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EEEEEC, #606D7E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EEEEEC, #606D7E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.start-game{
+/* .start-game{
     position: absolute;
-    top: 50%;
-    margin-top: -40px;
+    top: 100%;
     display: block;
-    font-size: 1.3em;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     font-weight: bold;
     font-family: 'Trebuchet MS', sans-serif;
+    font-size: 9px;
+    -webkit-text-stroke: 3px black;
     text-align: center;
     line-height: 2em;
     letter-spacing: -1px;
-    color: #1A345F;
-    border: none;
+    color: white;
+    border: 3px solid black;
+    border-radius: 20px;
     /* border-radius: 50%; */
-    background: #E53715;
-    cursor: pointer;
+    /* background: yellow; */
+    /* cursor: pointer;
     box-shadow: 0 0 0 0 rgba(#1A345F, .5);
-    transition: width 0.9s, height 0.9s ;
+    transition: width 0.9s, height 0.9s ; */
+/* } */
+
+#start-game, #stop-game {
+    line-height: 2em;
 }
 
 #start-game-2 {
@@ -46,4 +52,10 @@ canvas {
     height: 50px;
     position: absolute;
     z-index: 2;
+}
+
+#btn{
+    position: absolute;
+    top: 65px;
+    left: 5px;
 }
