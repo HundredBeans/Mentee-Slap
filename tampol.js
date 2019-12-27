@@ -19,16 +19,18 @@ let slapStatus = true
 function startGame(){
     canvas.style.visibility = 'visible'
     let startBtn = document.getElementById('start-game')
-    let startBtn2 = document.getElementById('start-game-2')
     document.getElementById('kahoot').play()
-    if (startBtn.innerHTML == 'STOP'){
+    let stopEle = document.getElementById('stop-game')
+    let buttonEle = stopEle.parentElement
+    
+
+    if (!startBtn){
         stop()
-        startBtn.innerHTML = 'START'
-    }else{
-        startBtn2.remove()
-        start()
-        startBtn.innerHTML = 'STOP'
-        loadInterval = window.setInterval(start, interval--)
+        location.reload(true)
+    }else {
+        buttonEle.style.zIndex = 2
+        startBtn.remove()
+        loadInterval = window.setInterval(start, 2000)
     }
 }
 // START GAME
@@ -70,6 +72,7 @@ function stop(){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     window.clearInterval(loadInterval)
     scoreElem.innerHTML = 0
+    document.getElementById('kahoot').pause()
 }
 
 // MOUSEDOWN EVENT
@@ -81,7 +84,7 @@ function onMouseDown(e) {
     let mouseXinCanvas = e.clientX;
     let mouseYinCanvas = e.clientY;
     // MAKE SURE THAT IT CLICK THE RIGHT AREA
-    if (mouseXinCanvas > 100){
+    if (mouseXinCanvas > 100 && canvas.style.visibility == 'visible'){
     if (x <= mouseXinCanvas && x+300 >= mouseXinCanvas && y <= mouseYinCanvas && y+200 >= mouseYinCanvas){
         score++
         if (slapStatus == true){
@@ -103,10 +106,12 @@ function onMouseDown(e) {
     } else {
         score--
         document.getElementById('kentut').play()
-        scoreElem.innerHTML = score
         if (score < 0){
+            scoreElem.innerHTML = 'FAIL'
             alert('Cupu lu')
             location.reload(true)
+        } else {
+            scoreElem.innerHTML = score
         }
         console.log("x =" + x)
         console.log("y =" + y)

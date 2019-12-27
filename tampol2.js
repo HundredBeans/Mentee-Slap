@@ -18,15 +18,19 @@ let slapStatus = true
 // DOM CLICK FROM HTML
 function startGame2(){
     canvas.style.visibility = 'visible'
-    let buttonDel = document.getElementById('start-game')
-    let buttonPress = document.getElementById('start-game-2')
-    if (buttonPress.innerHTML == 'STOP'){
+    let startBtn = document.getElementById("start-game")
+    document.getElementById('kahoot').play()
+    let stopEle = document.getElementById('stop-game')
+    let buttonEle = stopEle.parentElement
+    
+
+    if (!startBtn){
         stop()
-        buttonPress.innerHTML = 'START'
-    }else{
-        buttonDel.remove()
-        buttonPress.innerHTML = 'STOP'
-        start2()
+        location.reload(true)
+    }else {
+        buttonEle.style.zIndex = 2
+        startBtn.remove()
+        loadInterval = window.setInterval(start2, 2000)
     }
 }
 // START GAME
@@ -47,7 +51,6 @@ function start2(){
     // loadImage(rand, x, y)
     loadImageDynamic()
 }
-
 // STOP GAME
 function stop(){
     ctx.clearRect(0,0, canvas.width, canvas.height)
@@ -100,7 +103,7 @@ function onMouseDown(e) {
     let mouseXinCanvas = e.clientX;
     let mouseYinCanvas = e.clientY;
     // MAKE SURE THAT IT CLICK THE RIGHT AREA
-    if (mouseXinCanvas > 100){
+    if (mouseXinCanvas > 100 && canvas.style.visibility == 'visible'){
         if (x <= mouseXinCanvas && x+300 >= mouseXinCanvas && y <= mouseYinCanvas && y+200 >= mouseYinCanvas){
             score++
             scoreElem.innerHTML = score
@@ -125,10 +128,12 @@ function onMouseDown(e) {
         } else {
             score--
             document.getElementById('kentut').play()
-            scoreElem.innerHTML = score
             if (score < 0){
+                scoreElem.innerHTML = 'FAIL'
                 alert('Cupu lu')
                 location.reload(true)
+            }else{
+                scoreElem.innerHTML = score
             }
             console.log("x =" + x)
             console.log("y =" + y)
@@ -137,4 +142,3 @@ function onMouseDown(e) {
         }
     }
 };
-
